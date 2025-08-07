@@ -1,0 +1,122 @@
+[package]
+name = "zeus-ultimate"
+version = "3.1.0"
+edition = "2021"
+authors = ["ZEUSS LE FONDATEUR SUPRÊME <zeus@olympus.divine>"]
+description = "🏛️ Zeus Ultimate v3.1 UID Divine - Le système de cybersécurité suprême ⚡"
+license = "MIT"
+repository = "https://github.com/zeus-ultimate/zeus-ultimate"
+keywords = ["cybersecurity", "uid", "divine", "zeus", "ultimate"]
+categories = ["command-line-utilities", "cryptography", "network-programming"]
+
+[[bin]]
+name = "zeus"
+path = "src/main.rs"
+
+[dependencies]
+# 🚀 CLI et interface
+clap = { version = "4.4", features = ["derive", "color"] }
+colored = "2.1"
+dialoguer = { version = "0.11", features = ["password"] }
+
+# ⚡ Async et performance  
+tokio = { version = "1.40", features = ["full"] }
+futures = "0.3"
+
+# 🔐 Cryptographie et sécurité
+aes-gcm = "0.10"
+ed25519-dalek = "2.1"
+x25519-dalek = "2.0"
+sha2 = "0.10"
+blake3 = "1.5"
+rand = "0.8"
+zeroize = { version = "1.7", features = ["derive"] }
+secrecy = "0.8"
+
+# 🌐 Réseau et communication
+reqwest = { version = "0.11", features = ["json", "native-tls"] }
+tokio-tungstenite = "0.21"
+trust-dns-resolver = "0.23"
+
+# 📊 Sérialisation et données
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# ⏰ Temps et UUID
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.6", features = ["v4", "serde"] }
+
+# 📝 Logging et monitoring
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# 🛠️ Utilitaires
+anyhow = "1.0"
+thiserror = "1.0"
+dirs = "5.0"
+which = "6.0"
+
+# 🔧 Système et processus
+sysinfo = "0.30"
+nix = "0.27"
+
+# 🎨 Interface utilisateur
+indicatif = "0.17"
+console = "0.15"
+
+[dev-dependencies]
+criterion = "0.5"
+tempfile = "3.8"
+tokio-test = "0.4"
+
+[profile.release]
+# 🚀 Optimisations maximales pour production
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+# 🛠️ Optimisations de développement
+opt-level = 1
+debug = true
+incremental = true
+
+[features]
+default = ["full-suite"]
+
+# 🏛️ Suites de fonctionnalités
+full-suite = [
+    "uid-divine",
+    "ai-warfare", 
+    "post-quantum",
+    "network-stealth",
+    "communication-modern"
+]
+
+# 🆔 UID Divine System
+uid-divine = []
+
+# 🧠 AI Warfare Engine  
+ai-warfare = []
+
+# 🔐 Post-Quantum Cryptography
+post-quantum = []
+
+# 🌐 Network Stealth
+network-stealth = []
+
+# 📡 Modern Communication
+communication-modern = []
+
+# 🎭 Modules avancés
+obfuscation = []
+steganography = []
+persistence = []
+evasion = []
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
