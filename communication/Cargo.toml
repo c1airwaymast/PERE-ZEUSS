@@ -1,0 +1,15 @@
+[package]
+name = "communication"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Modern communication methods for OPTIMUS ULTIMATE"
+
+[dependencies]
+core = { path = "../core" }
+tokio.workspace = true
+serde.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+rand.workspace = true

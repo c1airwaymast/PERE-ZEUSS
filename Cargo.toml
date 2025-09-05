@@ -10,23 +10,15 @@ description = "CLI for OPTIMUS ULTIMATE PME Security Suite"
 name = "optimus-ultimate-cli"
 path = "src/main.rs"
 
+[[bin]]
+name = "demo_zeus_power"
+path = "demo_zeus_power.rs"
+
 [workspace]
 members = [
-    "injection",
-    "obfuscation", 
-    "encryption",
-    "evasion",
-    "persistence",
-    "steganography",
-    "ai_engine",
-    "network_stealth",
-    "system_integration",
-    "polymorphism",
-    "cleanup",
-    "identity_masking",
+    "core",
+    "performance", 
     "communication",
-    "performance",
-    "core"
 ]
 
 [workspace.package]

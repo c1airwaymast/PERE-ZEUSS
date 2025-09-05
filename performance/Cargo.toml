@@ -1,0 +1,17 @@
+[package]
+name = "performance"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Performance monitoring and testing for OPTIMUS ULTIMATE"
+
+[dependencies]
+core = { path = "../core" }
+tokio.workspace = true
+serde.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+chrono.workspace = true
+rand.workspace = true
+num_cpus = "1.16"
