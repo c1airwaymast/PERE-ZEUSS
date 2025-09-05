@@ -5,6 +5,7 @@ edition = "2021"
 authors = ["PERE-ZEUSS <contact@optimus-ultimate.com>"]
 license = "MIT"
 description = "CLI for OPTIMUS ULTIMATE PME Security Suite"
+default-run = "optimus-ultimate-cli"
 
 [[bin]]
 name = "optimus-ultimate-cli"
