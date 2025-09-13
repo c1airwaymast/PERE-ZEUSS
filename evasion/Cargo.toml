@@ -1,0 +1,15 @@
+[package]
+name = "evasion"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "evasion module for OPTIMUS ULTIMATE PME Security Suite"
+
+[dependencies]
+core = { path = "../core" }
+tokio.workspace = true
+serde.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+async-trait.workspace = true

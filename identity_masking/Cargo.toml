@@ -1,0 +1,15 @@
+[package]
+name = "identity_masking"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "identity_masking module for OPTIMUS ULTIMATE PME Security Suite"
+
+[dependencies]
+core = { path = "../core" }
+tokio.workspace = true
+serde.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+async-trait.workspace = true
