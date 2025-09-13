@@ -1,6 +1,0 @@
-🔥 OPTIMUS ULTIMATE - PME Security Suite 🔥
-Building advanced security modules...
-
-cargo:rustc-link-arg=-s
-cargo:rustc-env=CARGO_CFG_TARGET_FEATURE=+crt-static
-cargo:rustc-env=RUSTFLAGS=-C target-cpu=native
