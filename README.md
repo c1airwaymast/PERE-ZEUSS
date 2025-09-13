@@ -1,356 +1,240 @@
-# 🔥 OPTIMUS ULTIMATE - PME Security Suite
+# Installation Automatique Postal SMTP
 
-> **Advanced Cybersecurity Framework for Small and Medium Enterprises**
-> 
-> Créé par **PERE-ZEUSS** - Expert en sécurité Rust & cybersécurité avancée
+Suite de scripts pour installer automatiquement Postal SMTP sur votre serveur sans aucune interaction manuelle.
 
-## 🚀 Vue d'ensemble
-
-OPTIMUS ULTIMATE est une suite de sécurité de niveau entreprise conçue spécifiquement pour les **PME (Petites et Moyennes Entreprises)**. Développé en Rust pour des performances maximales et une sécurité inégalée.
-
-### ✨ Fonctionnalités Principales
-
-- 🔐 **Chiffrement Quantum-Résistant** - Protection contre les futures menaces quantiques
-- 🎭 **Obfuscation Avancée** - Protection de la propriété intellectuelle 
-- 💉 **Framework d'Injection** - Tests de sécurité professionnels
-- 🛡️ **Évasion Intelligente** - Contournement des systèmes de détection
-- 📌 **Persistance Avancée** - Maintien de l'accès sécurisé
-- 🖼️ **Stéganographie** - Dissimulation de données dans les médias
-- 🤖 **Moteur IA** - Intelligence artificielle pour la cybersécurité
-- 🌐 **Furtivité Réseau** - Communications sécurisées et indétectables
-- ⚙️ **Intégration Système** - Hooks système profonds
-- 🦎 **Polymorphisme** - Code auto-modifiant pour éviter la détection
-- 🧹 **Nettoyage Avancé** - Effacement sécurisé des traces
-- 👤 **Masquage d'Identité** - Protection de l'anonymat
-
-## 🏗️ Architecture
-
-```
-OPTIMUS ULTIMATE/
-├── 💉 injection/           # Framework d'injection avancé
-├── 🎭 obfuscation/         # Moteur d'obfuscation polymorphe
-├── 🔐 encryption/          # Suite cryptographique quantum-résistante
-├── 🛡️ evasion/             # Systèmes d'évasion intelligents
-├── 📌 persistence/         # Mécanismes de persistance
-├── 🖼️ steganography/       # Stéganographie avancée
-├── 🤖 ai_engine/           # Moteur d'intelligence artificielle
-├── 🌐 network_stealth/     # Furtivité réseau
-├── ⚙️ system_integration/   # Intégration système profonde
-├── 🦎 polymorphism/        # Code polymorphe
-├── 🧹 cleanup/             # Nettoyage sécurisé
-├── 👤 identity_masking/    # Masquage d'identité
-└── 🔧 core/               # Moteur principal
-```
-
-## 🛠️ Installation
-
-### Prérequis
-
-- Rust 1.75+ 
-- Cargo
-- OpenSSL/LibreSSL
-- Git
-
-### Installation Rapide
+## 🚀 Installation Rapide
 
 ```bash
-# Cloner le repository
-git clone https://github.com/PERE-ZEUSS/optimus-ultimate.git
-cd optimus-ultimate
+# Donner les permissions d'exécution
+chmod +x quick-install.sh
 
-# Build optimisé pour la production
-cargo build --release
-
-# Installation globale
-cargo install --path .
+# Lancer l'installation complète
+sudo ./quick-install.sh
 ```
 
-### Build avec Optimisations Maximales
+## 📁 Scripts Disponibles
+
+### 1. `quick-install.sh` (RECOMMANDÉ)
+Script principal d'installation rapide et automatique.
+- Installation complète en une seule commande
+- Aucune interaction requise
+- Configuration automatique de tous les composants
+
+### 2. `install-postal.sh`
+Script d'installation détaillé avec plus d'options.
+- Installation étape par étape
+- Messages détaillés de progression
+- Personnalisation possible des paramètres
+
+### 3. `create-admin-auto.sh`
+Création automatique de l'utilisateur administrateur.
+- Génération automatique du mot de passe
+- Aucune interaction manuelle
+
+### 4. `setup-dns-records.sh`
+Configuration et vérification des enregistrements DNS.
+- Affiche tous les enregistrements DNS requis
+- Vérifie la configuration actuelle
+- Détecte les problèmes de configuration
+
+### 5. `fix-postal-issues.sh`
+Outil de diagnostic et résolution de problèmes.
+- Menu interactif de dépannage
+- Correction automatique des problèmes courants
+- Vérification de l'état du système
+
+## 📋 Prérequis
+
+- **OS**: Ubuntu 20.04/22.04 ou Debian 11/12
+- **RAM**: Minimum 2GB (4GB recommandé)
+- **Stockage**: Minimum 20GB
+- **Accès**: Root ou sudo
+- **Ports**: 25, 80, 443, 587, 2525
+
+## 🔧 Configuration
+
+Les scripts utilisent les paramètres suivants (modifiables dans les scripts) :
 
 ```bash
-# Build avec optimisations natives
-RUSTFLAGS="-C target-cpu=native" cargo build --release
-
-# Build avec Link Time Optimization (LTO)
-cargo build --release --config profile.release.lto=true
+DOMAIN="electricym.net"
+ADMIN_EMAIL="admin@electricym.net"
+HOST_IP="159.69.199.74"
 ```
 
-## 🚀 Utilisation
+## 📝 Configuration DNS Requise
 
-### CLI Interface
+Après l'installation, configurez ces enregistrements DNS :
+
+### Enregistrements A
+```
+electricym.net              -> 159.69.199.74
+smtp.electricym.net        -> 159.69.199.74
+bounce.electricym.net      -> 159.69.199.74
+track.electricym.net       -> 159.69.199.74
+```
+
+### Enregistrement MX
+```
+electricym.net              -> 10 smtp.electricym.net.
+```
+
+### Enregistrement SPF
+```
+electricym.net              -> "v=spf1 ip4:159.69.199.74 ~all"
+```
+
+### Enregistrement DMARC (Recommandé)
+```
+_dmarc.electricym.net      -> "v=DMARC1; p=quarantine; rua=mailto:admin@electricym.net"
+```
+
+### Enregistrement PTR (Reverse DNS)
+```
+159.69.199.74              -> smtp.electricym.net.
+```
+*Note: Le PTR doit être configuré par votre hébergeur*
+
+## 🚦 Vérification Post-Installation
+
+### Vérifier l'état des services
+```bash
+cd /opt/postal
+docker compose ps
+```
+
+### Vérifier les logs
+```bash
+cd /opt/postal
+docker compose logs -f
+```
+
+### Tester la configuration DNS
+```bash
+./setup-dns-records.sh
+```
+
+### Résoudre les problèmes
+```bash
+/opt/postal/fix-postal-issues.sh
+```
+
+## 🔐 Accès au Panneau d'Administration
+
+Après l'installation, accédez à Postal via :
+- **URL**: https://electricym.net
+- **Email**: admin@electricym.net
+- **Mot de passe**: Généré automatiquement (voir `/opt/postal/credentials.txt`)
+
+## 📊 Structure des Fichiers
+
+```
+/opt/postal/
+├── config/
+│   ├── postal.yml          # Configuration principale
+│   └── signing.key         # Clé de signature DKIM
+├── data/
+│   ├── mariadb/           # Base de données
+│   └── redis/             # Cache Redis
+├── caddy/
+│   ├── Caddyfile          # Configuration reverse proxy
+│   └── data/              # Certificats SSL
+├── logs/                   # Logs de l'application
+├── docker-compose.yml      # Configuration Docker
+├── credentials.txt         # Informations de connexion
+└── check-postal.sh        # Script de vérification
+
+```
+
+## 🛠️ Maintenance
+
+### Mise à jour de Postal
+```bash
+cd /opt/postal
+docker compose pull
+docker compose up -d
+```
+
+### Sauvegarde
+```bash
+cd /opt/postal
+docker compose stop
+tar -czf postal-backup-$(date +%Y%m%d).tar.gz config/ data/
+docker compose start
+```
+
+### Redémarrage des services
+```bash
+cd /opt/postal
+docker compose restart
+```
+
+## ⚠️ Dépannage
+
+### Les conteneurs ne démarrent pas
+```bash
+# Vérifier les logs
+docker compose logs mariadb
+docker compose logs postal-web
+
+# Redémarrer tout
+docker compose down
+docker compose up -d
+```
+
+### Problèmes de certificat SSL
+```bash
+cd /opt/postal
+rm -rf caddy/data/caddy/certificates
+docker compose restart caddy
+```
+
+### Base de données corrompue
+```bash
+/opt/postal/fix-postal-issues.sh
+# Choisir l'option 9 (réinitialisation)
+```
+
+## 📧 Test d'Envoi
+
+Après configuration complète :
+
+1. Connectez-vous au panneau Postal
+2. Créez une organisation
+3. Créez un serveur de messagerie
+4. Générez des credentials API/SMTP
+5. Configurez votre application :
+   ```
+   SMTP Host: smtp.electricym.net
+   Port: 587 (STARTTLS) ou 465 (SSL)
+   Username: [créé dans Postal]
+   Password: [créé dans Postal]
+   ```
+
+## 🔄 Désinstallation
+
+Pour supprimer complètement Postal :
 
 ```bash
-# Initialisation pour votre PME
-optimus-ultimate-cli init --company "Ma PME" --preset enterprise
-
-# Évaluation de sécurité complète
-optimus-ultimate-cli assess --format json
-
-# Chiffrement de fichiers
-optimus-ultimate-cli encrypt --input secret.txt --algorithm aes256
-
-# Obfuscation de code
-optimus-ultimate-cli obfuscate --source main.rs --level military
-
-# Traitement sécurisé complet
-optimus-ultimate-cli secure --input data.txt --operation full
-
-# Statut du système
-optimus-ultimate-cli status
-
-# Verrouillage d'urgence
-optimus-ultimate-cli lockdown
+cd /opt/postal
+docker compose down -v
+cd /
+rm -rf /opt/postal
 ```
 
-### Configurations Prédéfinies
+## 📞 Support
 
-#### Configuration Entreprise
-```bash
-optimus-ultimate-cli init --preset enterprise
-```
-- Sécurité standard entreprise
-- Performance équilibrée
-- Modules essentiels activés
+En cas de problème :
+1. Consultez les logs : `docker compose logs -f`
+2. Utilisez le script de diagnostic : `./fix-postal-issues.sh`
+3. Vérifiez la configuration DNS : `./setup-dns-records.sh`
 
-#### Configuration Militaire
-```bash
-optimus-ultimate-cli init --preset military
-```
-- Sécurité niveau militaire
-- Tous les modules activés
-- Protection maximale
+## 📄 Licence
 
-#### Configuration Quantum
-```bash
-optimus-ultimate-cli init --preset quantum
-```
-- Résistance aux ordinateurs quantiques
-- Cryptographie post-quantique
-- Protection future-proof
+Ces scripts sont fournis "tels quels" pour faciliter l'installation de Postal.
+Postal est sous licence MIT : https://github.com/postalserver/postal
 
-## 🌐 Déploiement VPS
+## 🙏 Crédits
 
-### Linux (Ubuntu/Debian)
-
-```bash
-# Génération du script de déploiement
-optimus-ultimate-cli deploy --platform linux --vps "mon-serveur.com"
-
-# Exécution du déploiement
-./deploy_linux.sh
-```
-
-### Windows Server
-
-```bash
-# Génération du script Windows
-optimus-ultimate-cli deploy --platform windows --vps "mon-serveur.com"
-
-# Exécution (en tant qu'Administrateur)
-deploy_windows.bat
-```
-
-### Docker
-
-```bash
-# Génération des fichiers Docker
-optimus-ultimate-cli deploy --platform docker
-
-# Déploiement avec Docker Compose
-./deploy_docker.sh
-```
-
-## 🔐 Sécurité & Conformité
-
-### Standards Supportés
-- **NIST Cybersecurity Framework**
-- **ISO 27001/27002**
-- **ANSSI (France)**
-- **RGPD/GDPR**
-- **SOC 2 Type II**
-
-### Algorithmes Cryptographiques
-
-#### Classiques
-- AES-256-GCM (Chiffrement symétrique)
-- ChaCha20-Poly1305 (Alternative à AES)
-- Ed25519 (Signatures numériques)
-- X25519 (Échange de clés)
-
-#### Post-Quantiques
-- Kyber1024 (Encapsulation de clés)
-- Dilithium5 (Signatures numériques)
-- NTRU (Chiffrement)
-
-#### Fonctions de Hachage
-- SHA-256/512
-- BLAKE3
-- Argon2id (Dérivation de clés)
-
-## 📊 Performance
-
-### Benchmarks (Intel i7-12700K)
-
-| Module | Opération | Temps | Throughput |
-|--------|-----------|-------|------------|
-| Encryption | AES-256-GCM | <0.1ms | 2.5 GB/s |
-| Encryption | Kyber1024 | <1ms | 500 MB/s |
-| Obfuscation | Code (10KB) | <50ms | - |
-| Injection | DLL | <5ms | - |
-
-### Optimisations
-- **SIMD Instructions** - Utilisation des instructions vectorielles
-- **Multi-threading** - Parallélisation avec Rayon
-- **Zero-copy** - Minimisation des allocations
-- **LTO & PGO** - Optimisations de compilation
-
-## 🧪 Tests & Validation
-
-### Tests Unitaires
-```bash
-cargo test
-```
-
-### Tests d'Intégration
-```bash
-cargo test --test integration
-```
-
-### Tests de Performance
-```bash
-cargo bench
-```
-
-### Tests de Sécurité
-```bash
-# Analyse statique avec Clippy
-cargo clippy -- -D warnings
-
-# Audit de sécurité
-cargo audit
-
-# Tests de fuzzing
-cargo fuzz run target_name
-```
-
-## 📚 Documentation
-
-### Documentation API
-```bash
-cargo doc --open --no-deps
-```
-
-### Guides Utilisateur
-- [Guide d'Installation](docs/installation.md)
-- [Guide de Configuration](docs/configuration.md)
-- [Guide de Déploiement](docs/deployment.md)
-- [Guide de Sécurité](docs/security.md)
-
-### Documentation Développeur
-- [Architecture](docs/architecture.md)
-- [API Reference](docs/api.md)
-- [Contribution](docs/contributing.md)
-
-## 🛡️ Considérations Légales
-
-### Usage Autorisé
-✅ **Tests de sécurité autorisés**
-✅ **Protection de la propriété intellectuelle**
-✅ **Recherche en cybersécurité**
-✅ **Formation et éducation**
-✅ **Conformité réglementaire**
-
-### Usage Interdit
-❌ **Activités illégales**
-❌ **Attaques non autorisées**
-❌ **Violation de la vie privée**
-❌ **Contournement de licences**
-
-### Responsabilité
-L'utilisateur est entièrement responsable de l'usage qu'il fait de cette suite logicielle. OPTIMUS ULTIMATE est destiné uniquement à des fins légitimes de sécurité informatique.
-
-## 🏢 Support PME
-
-### Services Inclus
-- 📞 **Support technique** 24/7
-- 🎓 **Formation** de vos équipes
-- 📋 **Audit de sécurité** personnalisé
-- 🔧 **Maintenance** et mises à jour
-- 📊 **Rapports** de conformité
-
-### Tarification PME
-- **Starter** (1-10 employés): €99/mois
-- **Business** (11-50 employés): €299/mois
-- **Enterprise** (51+ employés): €599/mois
-
-## 🌟 Pourquoi OPTIMUS ULTIMATE ?
-
-### Avantages Concurrentiels
-1. **Performance Rust** - 10x plus rapide que Python/Java
-2. **Sécurité Memory-Safe** - Élimination des vulnérabilités mémoire
-3. **Post-Quantum Ready** - Protection contre les futures menaces
-4. **Architecture Modulaire** - Activation sélective des fonctionnalités
-5. **Open Source** - Transparence et auditabilité totales
-
-### Comparaison Concurrence
-
-| Fonctionnalité | OPTIMUS | Concurrent A | Concurrent B |
-|----------------|---------|--------------|--------------|
-| Performance | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| Sécurité | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
-| Post-Quantum | ✅ | ❌ | ❌ |
-| Open Source | ✅ | ❌ | ❌ |
-| Support PME | ✅ | ❌ | ✅ |
-
-## 🤝 Contribution
-
-Nous accueillons les contributions de la communauté !
-
-### Comment Contribuer
-1. Fork le repository
-2. Créer une branche feature (`git checkout -b feature/amazing-feature`)
-3. Commit vos changements (`git commit -m 'Add amazing feature'`)
-4. Push vers la branche (`git push origin feature/amazing-feature`)
-5. Ouvrir une Pull Request
-
-### Code de Conduite
-Consultez notre [Code de Conduite](CODE_OF_CONDUCT.md).
-
-## 📄 License
-
-Ce projet est sous licence **MIT**. Voir [LICENSE](LICENSE) pour plus de détails.
-
-## 👨‍💻 Auteur
-
-**PERE-ZEUSS**
-- 🌐 GitHub: [@PERE-ZEUSS](https://github.com/PERE-ZEUSS)
-- 📧 Email: contact@optimus-ultimate.com
-- 💼 LinkedIn: [PERE-ZEUSS](https://linkedin.com/in/pere-zeuss)
-
-### Expertise
-- 🦀 **Rust Expert** - 5+ années d'expérience
-- 🔐 **Cybersécurité** - 10+ années dans la sécurité informatique
-- 🏢 **Solutions PME** - Spécialiste des besoins des PME
-- 🎓 **Formateur** - Certifié en cybersécurité avancée
-
-## 🙏 Remerciements
-
-- L'équipe Rust pour ce langage extraordinaire
-- La communauté open source pour les crates utilisés
-- Les entreprises partenaires pour leurs retours
-- Les chercheurs en sécurité pour leurs contributions
-
----
-
-<div align="center">
-
-**🔥 OPTIMUS ULTIMATE - L'Excellence en Cybersécurité PME 🔥**
-
-*Propulsé par Rust • Conçu pour les PME • Sécurisé par Design*
-
-[![Rust](https://img.shields.io/badge/rust-1.75+-orange.svg)](https://www.rust-lang.org/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Security](https://img.shields.io/badge/security-military_grade-red.svg)](https://optimus-ultimate.com/security)
-[![PME](https://img.shields.io/badge/target-PME-green.svg)](https://optimus-ultimate.com/pme)
-
-</div>
+- Postal Server : https://github.com/postalserver/postal
+- Docker : https://www.docker.com/
+- Caddy : https://caddyserver.com/
